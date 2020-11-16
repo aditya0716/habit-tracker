@@ -1,0 +1,90 @@
+body{
+    height: 100vh;
+    background: linear-gradient(45deg, black, transparent);
+}
+.habitatcontainer{
+    background-image:url(hb.jpg) !important;
+    background-size: contain;
+    height: 90vh;
+    margin-top: 37px;
+    overflow-y: scroll;
+}
+.specifichabit{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    align-self: center;
+}
+.dailyhabit{
+    margin-top: 10px;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #948787, transparent);
+}
+.habitstatus{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+#register{
+    position: absolute;
+    width: 50%;
+    padding: 10px;
+    margin-left: 24%;
+    margin-top: 6%;
+    /* border-radius: 16px; */
+    display: none;
+    z-index: 1;
+}
+#addhabitbut{
+    font-size: 55px;
+    padding: 7px;
+    height: 60px;
+    width: 60px; 
+    margin-top: 48rem;
+    margin-left: -95px;
+    margin-bottom: 20px;
+    background-color: white;
+    z-index: 12;
+    border-radius: 50%;
+}
+#addhabitbut i{ 
+    color: #F44336;
+    position: absolute;
+    margin-top: -4px;
+    margin-left: -1px;
+}
+h3{
+    font-family: sans-serif;
+    margin: 4px;
+}
+.habitatcontainer::-webkit-scrollbar {
+    width: 5px;
+  }
+   
+.habitatcontainer::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(109, 106, 106, 0.3);
+  }
+   
+.habitatcontainer::-webkit-scrollbar-thumb {
+    background-color: #2f3035;
+    outline: 1px solid slategrey;
+  }
+  .aligned
+{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    float: left;
+    display: none;
+}
+.view
+{
+    display: block;
+}
+.hide
+{
+    display: none;
+}

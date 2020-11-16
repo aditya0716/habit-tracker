@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weekly Data</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <!-- Table to display our weekly data -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <span><a class="navbar-brand" href="/"> <h3>Home</h3></a></span>
+                    <span><h3><%= weekid[0].name %></h3></span>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">SUNDAY </th>
+                            <th scope="col">MONDAY</th>
+                            <th scope="col">TUESDAY </th>
+                            <th scope="col">WEDNESDAY</th>
+                            <th scope="col">THURSDAY </th>
+                            <th scope="col">FRIDAY </th>
+                            <th scope="col">SATURDAY</th>
+                          </tr>
+                          <tr>
+                            <!-- Using moment that we use from index.js to get out real time date and update it accordingly -->
+                            <th scope="col"><%= moment().add('day',1).toString().substring(3,11) %></th>
+                            <th scope="col"><%= moment().add('day',2).toString().substring(3,11) %></th>
+                            <th scope="col"><%= moment().add('day',3).toString().substring(3,11) %></th>
+                            <th scope="col"><%= moment().add('day',4).toString().substring(3,11) %></th>
+                            <th scope="col"><%= moment().add('day',5).toString().substring(3,11)%></th>
+                            <th scope="col"><%= moment().add('day',6).toString().substring(3,11) %></th>
+                            <th scope="col"><%= moment().add('day',0).toString().substring(3,11)%></th>
+                          </tr>
+                        </thead>
+                        <!-- Displaying whether we have done it on this day or not and by using if done then do this else that -->
+                        <tbody>
+                          <tr>
+                            <% if(weekid[0].sun) { %>
+                                <td><a href="/pending/?id=<%= weekid[0]._id %>&day=sun"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button">Done</button></a></td>
+                            <%} else{%>
+                                <td><a href="/done/?id=<%= weekid[0]._id %>&day=sun"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button" >Pending</button></a></td>
+                            <% } %>
+                            <% if(weekid[0].mon){ %>
+                                <td><a href="/pending/?id=<%= weekid[0]._id %>&day=mon"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button">Done</button></a></td>
+                            <%} else{%>
+                                <td><a href="/done/?id=<%= weekid[0]._id %>&day=mon"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button" >Pending</button></a></td>
+                            <% } %>
+                            <% if(weekid[0].tue){ %>
+                                <td><a href="/pending/?id=<%= weekid[0]._id %>&day=tue"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button">Done</button></a></td>
+                            <%} else{%>
+                                <td><a href="/done/?id=<%= weekid[0]._id %>&day=tue"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button" >Pending</button></a></td>
+                            <% } %>
+                            <% if(weekid[0].wed){ %>
+                                <td><a href="/pending/?id=<%= weekid[0]._id %>&day=wed"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button">Done</button></a></td>
+                            <%} else{%>
+                                <td><a href="/done/?id=<%= weekid[0]._id %>&day=wed"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button" >Pending</button></a></td>
+                            <% } %>
+                            <% if(weekid[0].thu){ %>
+                                <td><a href="/pending/?id=<%= weekid[0]._id %>&day=thu"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button">Done</button></a></td>
+                            <%} else{%>
+                                <td><a href="/done/?id=<%= weekid[0]._id %>&day=thu"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button" >Pending</button></a></td>
+                            <% } %>
+                            <% if(weekid[0].fri){ %>
+                                <td><a href="/pending/?id=<%= weekid[0]._id %>&day=fri"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button">Done</button></a></td>
+                            <%} else{%>
+                                <td><a href="/done/?id=<%= weekid[0]._id %>&day=fri"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button" >Pending</button></a></td>
+                            <% } %>
+                            <% if(weekid[0].sat){ %>
+                                <td><a href="/pending/?id=<%= weekid[0]._id %>&day=sat"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button">Done</button></a></td>
+                            <%} else{%>
+                                <td><a href="/done/?id=<%= weekid[0]._id %>&day=sat"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="button" >Pending</button></a></td>
+                            <% } %>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>        
+    </body>
+</html>

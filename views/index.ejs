@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Habit Tracker</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="1.css">
+    </head>
+    <body>
+        <!-- Contains the form to add the new habit and is absolute in nature -->
+    <div id="register">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-md-4 col-sm-4 col-xs-12" style="background-color:#79572a;">
+                    <h3><u><i>Add your new habit to track </i></u></h3>
+                    <form action="/save" method="POST">
+                        <div class="form-group">
+                        <label for="habit">Habit</label>
+                        <input type="text" class="form-control"  name="habit">
+                        <small id="emailHelp" class="form-text text-muted">Enter your New Habit to Monitor</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="desc">Description</label>
+                            <input type="text" class="form-control"  name="desc">
+                            <small id="emailHelp" class="form-text text-muted">Description about the Habit</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="routine">Routine to Follow </label>
+                            <input type="text" class="form-control"  name="routine">
+                            <small id="emailHelp" class="form-text text-muted">Times/Week (Enter a number between 1 to 7)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="startdate">Date to Begin</label>
+                            <input type="date" class="form-control"  name="startdate">
+                            <small id="emailHelp" class="form-text text-muted">Date from which you want to start</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="starttime">Time</label>
+                            <input type="time" class="form-control"  name="starttime">
+                            <small id="emailHelp" class="form-text text-muted">When time slot do you wnat to provide to this event</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add to your List</button>
+                        <button type="button" class="btn btn-primary" id="close">Close</button>
+
+                    </form>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            </div>
+        </div>
+    </div>
+    <!-- This contains the displaying of all of our habits It is the app main page -->
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            <div class="col-md-4 col-sm-4 col-xs-12 habitatcontainer">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-top: 15px;">
+                    <a class="navbar-brand" href="/"> <h4> Daily Habits</h4></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <form class="form-inline my-2 my-lg-0" action="/search" method="POST">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search your Habit" name="search">
+                        <button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark" type="submit">Search</button>
+                      </form>
+                    </div>
+                  </nav>
+                  <hr>
+                  <!-- Loop to iteerate over our habit array -->
+                  <% for(let i of habitarray) { %>  
+                  <div class="dailyhabit">
+                    <div class="specifichabit">
+                        <a href="/week/?id=<%= i._id%>&name=<%=i.habit%>"><h5><%= i.habit %></h5></a>
+                        <p><%= i.starttime %></p>
+                    </div>
+                    <div class="habitstatus">
+                        <p><%= i.routine %> days per week</p>
+                        <p>5</p>
+                        <p>38/62</p>
+                        <p>Date started : <%= i.startdate %></p>
+                    </div>
+                    <a href="/delete/?id=<%= i._id %>"><button class="btn btn-outline-secondary my-2 my-sm-0 btn-dark">Remove This Habit</button></a>
+                  </div>
+                  <% } %>
+            </div>
+            <div id="addhabitbut"><i class="fas fa-plus"></i></div>
+            <div class="col-md-4 col-sm-4 col-xs-12" > </div>
+            
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>    
+    <script src="script.js"></script>    
+</body>
+</html>
